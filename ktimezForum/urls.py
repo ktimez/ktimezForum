@@ -20,6 +20,6 @@ from Questions.views import HomeListView, QuestionDetailView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeListView.as_view()),
-    url(r'^questions/(?P<slug>\w+)/$', QuestionDetailView.as_view()),
+    url(r'^questions/(?P<slug>[\w-]+)/$', QuestionDetailView.as_view()),
 
 ]
