@@ -1,0 +1,11 @@
+
+  <h1> Baza </h1>
+
+  <form method="POST"> {% csrf_token %}
+      <!--<input type="text" name='name' placeholder="Your title">
+      <input type="text" name='location' placeholder="location">
+      <input type="text" name='category' placeholder="category"> -->
+      {{form.as_p}}
+      <button type="submit">Save</button>
+  </form>
+

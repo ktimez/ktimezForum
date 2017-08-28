@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from Questions.views import HomeListView, QuestionDetailView
+from Questions.views import HomeListView, QuestionDetailView, QuestionCreateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeListView.as_view()),
-    url(r'^questions/(?P<slug>[\w-]+)/$', QuestionDetailView.as_view()),
+    url(r'^baza/', QuestionCreateView.as_view()),
+    url(r'^ikibazo/(?P<slug>[\w-]+)/$', QuestionDetailView.as_view()),
 
 ]
