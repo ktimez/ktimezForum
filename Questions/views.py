@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import AskedQuestions, Replies
 from .forms import AskQ
 
@@ -29,13 +29,15 @@ class QuestionDetailView(DetailView):
 class QuestionCreateView(CreateView):
     form_class = AskQ
     template_name = 'Questions/addQuestion.html'
-    success_url = '/ibibazo/'
+    #success_url = '/'
     login_url = '/login/'
     
 
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = self.request.user
+        instance.rank_scored = 0
+        instance.save()
         return super(QuestionCreateView, self).form_valid(form)
 
 
@@ -58,3 +60,13 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 
+class QuestionEditView(UpdateView):
+    model = AskedQuestions
+    form_class = AskQ
+    template_name =''
+
+
+
+class QuestionDeleteView(DeleteView):
+    model = AskedQuestions
+    success_url = '/'

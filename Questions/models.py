@@ -7,6 +7,9 @@ from autoslug import AutoSlugField
 from django.conf import settings
 from django.db.models import Count
 
+
+from django.core.urlresolvers import reverse
+
 class AskedQuestions(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
     title = models.CharField(max_length=200)
@@ -14,6 +17,9 @@ class AskedQuestions(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(blank=True, null=True)
     approved = models.BooleanField(default=True)
+
+    def get_absolute_url(self):
+        return reverse('questionDetails', kwargs={'slug':self.slug})
 
     def __str__(self):
         return self.title

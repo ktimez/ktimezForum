@@ -1,6 +1,15 @@
 <h1>{{ object.title }}</h1>
 <br>
 <p>{{ object.description }}</p>
+{{object.owner}}  == {{user.username}}
+
+{% if user.is_authenticated %}
+  
+{% if object.owner == user %}
+    Edit
+{% endif %}
+
+{% endif %}
 
 <hr/>
 

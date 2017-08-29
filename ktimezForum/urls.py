@@ -26,6 +26,6 @@ urlpatterns = [
 
     url(r'^$', HomeListView.as_view(), name='home'),
     url(r'^baza/', QuestionCreateView.as_view()),
-    url(r'^ikibazo/(?P<slug>[\w-]+)/$', QuestionDetailView.as_view()),
+    url(r'^ikibazo/(?P<slug>[\w-]+)/$', QuestionDetailView.as_view(),  name='questionDetails'),
 
 ]
