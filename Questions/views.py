@@ -28,14 +28,14 @@ class QuestionDetailView(DetailView):
 
 class QuestionCreateView(CreateView):
     form_class = AskQ
-    template_name = 'addQuestion.html'
+    template_name = 'Questions/addQuestion.html'
     success_url = '/ibibazo/'
     login_url = '/login/'
     
 
     def form_valid(self, form):
         instance = form.save(commit=False)
-        instance.owner = request.user
+        instance.owner = self.request.user
         return super(QuestionCreateView, self).form_valid(form)
 
 
