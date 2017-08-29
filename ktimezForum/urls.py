@@ -15,11 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from Questions.views import HomeListView, QuestionDetailView, QuestionCreateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', HomeListView.as_view()),
+    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
+
+    url(r'^$', HomeListView.as_view(), name='home'),
     url(r'^baza/', QuestionCreateView.as_view()),
     url(r'^ikibazo/(?P<slug>[\w-]+)/$', QuestionDetailView.as_view()),
 

@@ -20,6 +20,7 @@ class QuestionDetailView(DetailView):
         commentss = obj.replies_set.all()
         context['comments'] = commentss
         return context
+    
        
 
 class QuestionCreateView(CreateView):
