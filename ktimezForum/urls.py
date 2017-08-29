@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from Questions.views import HomeListView, QuestionDetailView, QuestionCreateView, signup
+from Questions.views import HomeListView, QuestionDetailView, QuestionCreateView, signup, QuestionDeleteView, QuestionEditView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,7 +25,11 @@ urlpatterns = [
      url(r'^signup/$', signup, name='signup'),
 
     url(r'^$', HomeListView.as_view(), name='home'),
-    url(r'^baza/', QuestionCreateView.as_view()),
+    url(r'^baza/', QuestionCreateView.as_view(), name='baza'),
+    
     url(r'^ikibazo/(?P<slug>[\w-]+)/$', QuestionDetailView.as_view(),  name='questionDetails'),
+    url(r'^ikibazo/kosora/(?P<slug>[\w-]+)/$', QuestionEditView.as_view(), name='kosora'),
+    url(r'^ikibazo/siba/(?P<slug>[\w-]+)/$', QuestionDeleteView.as_view(), name='siba'),
+
 
 ]

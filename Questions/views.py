@@ -63,7 +63,7 @@ def signup(request):
 class QuestionEditView(UpdateView):
     model = AskedQuestions
     form_class = AskQ
-    template_name =''
+    template_name ='Questions/addQuestion.html'
 
 
 

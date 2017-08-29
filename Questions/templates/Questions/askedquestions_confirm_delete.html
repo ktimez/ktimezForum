@@ -1,0 +1,7 @@
+<h3> ushaka gusiba ikibazo {{object.title}} ? </h3>
+
+<form method="POST" action="{% url 'siba' slug=object.slug %}">
+    {% csrf_token %}
+    <a href="{% url 'questionDetails' slug=object.slug %}">  Oya </a>
+    <p> <input type="submit" value="YEGo Siba" /> </p>
+</form>
